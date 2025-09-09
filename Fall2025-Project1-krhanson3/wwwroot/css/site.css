@@ -25,7 +25,11 @@ body {
   justify-content: center;
 }
 
-#CoverArt {
+h1{
+  justify-content: center;
+}
+
+img {
   width: "50%";
   height: "50%"
 }
