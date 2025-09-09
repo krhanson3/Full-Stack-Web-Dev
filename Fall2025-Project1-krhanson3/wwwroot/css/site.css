@@ -21,7 +21,8 @@ html {
 body {
   margin-bottom: 60px;
   background-color: antiquewhite;
-  padding: 20px; 
+  padding: 20px;
+  color: brown;  
   justify-content: center;
 }
 
