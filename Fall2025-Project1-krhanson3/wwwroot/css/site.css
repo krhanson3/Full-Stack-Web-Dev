@@ -41,8 +41,8 @@ img {
   width: 100%;
   max-width: 970px;
   height: auto;
-  aspect-ratio: 16 / 9; /* maintain aspect ratio */
-  border-radius: 15px;  /* rounded corners */
+  aspect-ratio: 16 / 9; 
+  border-radius: 15px;  
   display: block;
   margin: 20px auto;
 }
