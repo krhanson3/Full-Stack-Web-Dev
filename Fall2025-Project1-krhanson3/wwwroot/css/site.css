@@ -1,6 +1,5 @@
 html {
   font-size: 14px;
-  background-color: light brown;
 }
 
 @media (min-width: 768px) {
@@ -22,15 +21,49 @@ body {
   margin-bottom: 60px;
   background-color: antiquewhite;
   padding: 20px;
-  color: brown;  
-  justify-content: center;
+  color: rgb(112, 28, 28);  
+  text-align: center;
 }
 
 h1{
-  justify-content: center;
+  text-align: center;
 }
 
 img {
-  width: "50%";
-  height: "50%"
+  width: 50%;
+  height: 50%;
+  display: block; 
+  margin: 0 auto; 
+  border-radius: 25px;
+}
+
+#Trailer {
+  width: 100%;
+  max-width: 970px;
+  height: auto;
+  aspect-ratio: 16 / 9; /* maintain aspect ratio */
+  border-radius: 15px;  /* rounded corners */
+  display: block;
+  margin: 20px auto;
+}
+
+a{
+  color: rgb(112, 28, 28); 
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover{
+  color: darkred; 
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:visited{
+  color:maroon; 
+}
+
+ul{
+  display: inline-block;
+  text-align: center; 
 }
