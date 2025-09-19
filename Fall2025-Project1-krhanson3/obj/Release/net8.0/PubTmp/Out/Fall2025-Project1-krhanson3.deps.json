@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Fall2025-Project1-krhanson3/1.0.0": {
+        "runtime": {
+          "Fall2025-Project1-krhanson3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fall2025-Project1-krhanson3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

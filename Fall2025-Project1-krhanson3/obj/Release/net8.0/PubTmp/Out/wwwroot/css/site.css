@@ -1,0 +1,69 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: antiquewhite;
+  padding: 20px;
+  color: rgb(112, 28, 28);  
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  display: block; 
+  margin: 0 auto; 
+  border-radius: 25px;
+}
+
+#Trailer {
+  width: 100%;
+  max-width: 970px;
+  height: auto;
+  aspect-ratio: 16 / 9; 
+  border-radius: 15px;  
+  display: block;
+  margin: 20px auto;
+}
+
+a{
+  color: rgb(112, 28, 28); 
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover{
+  color: darkred; 
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:visited{
+  color:maroon; 
+}
+
+ul{
+  display: inline-block;
+  text-align: center; 
+}

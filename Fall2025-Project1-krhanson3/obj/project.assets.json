@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Project 1\\Fall2025-Project1-krhanson3\\Fall2025-Project1-krhanson3.csproj",
+      "projectUniqueName": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project1-krhanson3\\Fall2025-Project1-krhanson3.csproj",
       "projectName": "Fall2025-Project1-krhanson3",
-      "projectPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Project 1\\Fall2025-Project1-krhanson3\\Fall2025-Project1-krhanson3.csproj",
+      "projectPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project1-krhanson3\\Fall2025-Project1-krhanson3.csproj",
       "packagesPath": "C:\\Users\\kaity\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Project 1\\Fall2025-Project1-krhanson3\\obj\\",
+      "outputPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project1-krhanson3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

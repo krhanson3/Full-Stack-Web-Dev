@@ -2,5 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project1-krhanson3\Properties\PublishProfiles\Fall2025-Project1-krhanson3 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
