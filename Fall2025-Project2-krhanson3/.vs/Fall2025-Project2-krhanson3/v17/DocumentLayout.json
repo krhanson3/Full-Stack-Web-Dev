@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-09-30T14:43:29.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T14:42:10.787Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
