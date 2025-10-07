@@ -3,12 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kaity\\AppData\\Roaming\\Microsoft\\UserSecrets\\fdd7d99c-2707-47f6-b758-5e104921ac4f\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|c:\\users\\kaity\\onedrive\\desktop\\full-stack-web-dev-repo\\fall2025-project2-krhanson3\\fall2025-project2-krhanson3.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{73F688AA-C4CE-4B2F-9FB2-07F37513B927}|Fall2025-Project2-krhanson3.csproj|solutionrelative:fall2025-project2-krhanson3.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +25,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-06T15:02:56.377Z",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T15:30:17.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "wwwroot\\index.html",
-              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\index.html",
-              "RelativeToolTip": "wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-09-30T14:43:29.18Z",
+              "DocumentIndex": 3,
+              "Title": "Fall2025-Project2-krhanson3",
+              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Fall2025-Project2-krhanson3.csproj",
+              "RelativeDocumentMoniker": "Fall2025-Project2-krhanson3.csproj",
+              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\Fall2025-Project2-krhanson3.csproj",
+              "RelativeToolTip": "Fall2025-Project2-krhanson3.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-07T15:14:02.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\kaity\\AppData\\Roaming\\Microsoft\\UserSecrets\\fdd7d99c-2707-47f6-b758-5e104921ac4f\\secrets.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\fdd7d99c-2707-47f6-b758-5e104921ac4f\\secrets.json",
+              "ToolTip": "C:\\Users\\kaity\\AppData\\Roaming\\Microsoft\\UserSecrets\\fdd7d99c-2707-47f6-b758-5e104921ac4f\\secrets.json",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\fdd7d99c-2707-47f6-b758-5e104921ac4f\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-07T15:14:10.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\kaity\\OneDrive\\Desktop\\Full-Stack-Web-Dev-Repo\\Fall2025-Project2-krhanson3\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-07T15:13:44.224Z",
               "EditorCaption": ""
             }
           ]

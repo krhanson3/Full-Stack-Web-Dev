@@ -1,7 +1,7 @@
 ﻿//overall function to hold search, background, and time functions
 $(document).ready(function () {
     const apiKey = _config["apiKey:Secret"];  
-    const cx = "04b1f5175b4d14d81";
+    const cx = _config["cx:Secret"];
     //search function
     $("#searchBtn").click(function () {
         const query = $("#query").val();

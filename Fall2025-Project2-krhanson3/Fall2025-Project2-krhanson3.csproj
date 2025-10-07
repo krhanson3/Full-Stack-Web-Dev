@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Fall2025_Project2_krhanson3</RootNamespace>
+    <UserSecretsId>fdd7d99c-2707-47f6-b758-5e104921ac4f</UserSecretsId>
   </PropertyGroup>
 
 </Project>
