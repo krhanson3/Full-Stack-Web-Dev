@@ -1,0 +1,9 @@
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\Fall2025-Project2-krhanson3.exe
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\appsettings.Development.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\appsettings.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\package-lock.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\package.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\Fall2025-Project2-krhanson3.dll
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\Fall2025-Project2-krhanson3.deps.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\Fall2025-Project2-krhanson3.runtimeconfig.json
+C:\Users\kaity\OneDrive\Desktop\Full-Stack-Web-Dev-Repo\Fall2025-Project2-krhanson3\obj\Release\net9.0\PubTmp\Out\Fall2025-Project2-krhanson3.pdb
