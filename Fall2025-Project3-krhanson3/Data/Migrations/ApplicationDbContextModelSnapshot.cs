@@ -34,11 +34,9 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IMDBUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -46,7 +44,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.HasKey("ActorId");
@@ -91,7 +88,7 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                     b.Property<string>("IMDBUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Poster")
+                    b.Property<byte[]>("Photo")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<int>("ReleaseYear")

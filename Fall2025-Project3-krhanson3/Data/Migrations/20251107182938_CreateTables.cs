@@ -37,7 +37,7 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReleaseYear = table.Column<int>(type: "int", nullable: false),
                     IMDBUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Poster = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {

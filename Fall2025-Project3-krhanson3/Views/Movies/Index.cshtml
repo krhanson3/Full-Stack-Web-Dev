@@ -33,13 +33,17 @@
                     {
                         <a href="@item.IMDBUrl" target="_blank">IMDB</a>
                     }
+                    else
+                    {
+                        <span class="text-muted">N/A</span>
+                    }
                 </td>
                 <td>
                     @if (item.Poster != null && item.Poster.Length > 0)
                     {
                         var imageBase64 = Convert.ToBase64String(item.Poster);
                         var imageSrc = $"data:image/png;base64,{imageBase64}";
-                        <img src="@imageSrc" alt="Movie Poster" width="50" height="50" />
+                        <img src="@imageSrc" alt="Movie Poster" width="50" height="70" style="object-fit:cover;" />
                     }
                     else
                     {

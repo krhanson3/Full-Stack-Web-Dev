@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -28,13 +29,12 @@ namespace Fall2025_Project3_krhanson3.Controllers
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {   return NotFound();  }
+            if (id == null) return NotFound();
 
-            var movies = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
-            if (movies == null) return NotFound();
-       
-            return View(movies);
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            if (movie == null) return NotFound();
+
+            return View(movie);
         }
 
         // GET: Movies/Create
@@ -44,107 +44,96 @@ namespace Fall2025_Project3_krhanson3.Controllers
         }
 
         // POST: Movies/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MovieId,Title,Genre,ReleaseYear,IMDBUrl")] Movies movies, IFormFile? PhotoFile)
+        public async Task<IActionResult> Create([Bind("Title,Genre,ReleaseYear,IMDBUrl")] Movies movie, IFormFile? PosterFile)
         {
             if (ModelState.IsValid)
             {
-                if(PhotoFile != null && PhotoFile.Length > 0)
+                if (PosterFile != null && PosterFile.Length > 0)
                 {
                     using var ms = new MemoryStream();
-                    await PhotoFile.CopyToAsync(ms);
-                    movies.Photo = ms.ToArray();
+                    await PosterFile.CopyToAsync(ms);
+                    movie.Poster = ms.ToArray();
                 }
 
-                _context.Add(movies);
+                _context.Add(movie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(movies);
+
+            return View(movie);
         }
 
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var movies = await _context.Movies.FindAsync(id);
-            if (movies == null)
-            {
-                return NotFound();
-            }
-            return View(movies);
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie == null) return NotFound();
+
+            return View(movie);
         }
 
         // POST: Movies/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,Genre,ReleaseYear,IMDBUrl")] Movies updatedMovies, IFormFile? PhotoFile)
+        public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,Genre,ReleaseYear,IMDBUrl")] Movies updatedMovie, IFormFile? PosterFile)
         {
-            if (id != updatedMovies.MovieId) return NotFound();
-           
+            if (id != updatedMovie.MovieId) return NotFound();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                   var existingMovie = await _context.Movies.FindAsync(id);
-                     if (existingMovie == null) return NotFound();
+                    var existingMovie = await _context.Movies.FindAsync(id);
+                    if (existingMovie == null) return NotFound();
 
-                    // Update editable fields
-                    existingMovie.Title = updatedMovies.Title;  
-                    existingMovie.Genre = updatedMovies.Genre;
-                    existingMovie.ReleaseYear = updatedMovies.ReleaseYear;
-                    existingMovie.IMDBUrl = updatedMovies.IMDBUrl;
-                    if (PhotoFile != null && PhotoFile.Length > 0)
+                    // Update fields
+                    existingMovie.Title = updatedMovie.Title;
+                    existingMovie.Genre = updatedMovie.Genre;
+                    existingMovie.ReleaseYear = updatedMovie.ReleaseYear;
+                    existingMovie.IMDBUrl = updatedMovie.IMDBUrl;
+
+                    // Only update poster if new one is uploaded
+                    if (PosterFile != null && PosterFile.Length > 0)
                     {
                         using var ms = new MemoryStream();
-                        await PhotoFile.CopyToAsync(ms);
-                        existingMovie.Photo = ms.ToArray();
+                        await PosterFile.CopyToAsync(ms);
+                        existingMovie.Poster = ms.ToArray();
                     }
-                    await _context.SaveChangesAsync();
 
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Movies.Any(e => e.MovieId == updatedMovies.MovieId))
+                    if (!_context.Movies.Any(e => e.MovieId == updatedMovie.MovieId))
                         return NotFound();
                     else
                         throw;
-                    
                 }
+
                 return RedirectToAction(nameof(Index));
             }
 
-            var moviePoster = await _context.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.MovieId == id);
-            if (moviePoster != null)
-            {   updatedMovies.Poster = moviePoster.Poster;  }
+            // Reload existing image on validation fail
+            var movieWithPoster = await _context.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.MovieId == id);
+            if (movieWithPoster != null)
+                updatedMovie.Poster = movieWithPoster.Poster;
 
-            return View(updatedMovies);
+            return View(updatedMovie);
         }
-
 
         // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var movies = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
-               
-            if (movies == null) return NotFound();
-            
-            return View(movies);
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            if (movie == null) return NotFound();
+
+            return View(movie);
         }
 
         // POST: Movies/Delete/5
@@ -152,13 +141,19 @@ namespace Fall2025_Project3_krhanson3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var movies = await _context.Movies.FindAsync(id);
-            if (movies != null)
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie != null)
             {
-                _context.Movies.Remove(movies);
+                _context.Movies.Remove(movie);
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool MoviesExists(int id)
+        {
+            return _context.Movies.Any(e => e.MovieId == id);
         }
     }
 }
