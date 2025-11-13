@@ -4,6 +4,7 @@ using Fall2025_Project3_krhanson3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fall2025_Project3_krhanson3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251113201253_ActorsMovieActors")]
+    partial class ActorsMovieActors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -308,13 +311,13 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
             modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.MovieActor", b =>
                 {
                     b.HasOne("Fall2025_Project3_krhanson3.Models.Actors", "Actor")
-                        .WithMany("MovieActors")
+                        .WithMany()
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Fall2025_Project3_krhanson3.Models.Movies", "Movie")
-                        .WithMany("MovieActors")
+                        .WithMany()
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -373,16 +376,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Actors", b =>
-                {
-                    b.Navigation("MovieActors");
-                });
-
-            modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Movies", b =>
-                {
-                    b.Navigation("MovieActors");
                 });
 #pragma warning restore 612, 618
         }

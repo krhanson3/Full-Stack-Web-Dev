@@ -25,5 +25,7 @@ namespace Fall2025_Project3_krhanson3.Models
         // Used only for uploads
         [NotMapped]
         public IFormFile? PhotoFile { get; set; }
+
+        public ICollection<MovieActor>? MovieActors { get; set; }
     }
 }

@@ -31,7 +31,9 @@ namespace Fall2025_Project3_krhanson3.Controllers
         {
             if (id == null) return NotFound();
 
-            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            var movie = await _context.Movies.Include(m => m.MovieActors).ThenInclude(ma => ma.Actor)     
+                            .FirstOrDefaultAsync(m => m.MovieId == id);
+
             if (movie == null) return NotFound();
 
             return View(movie);

@@ -30,7 +30,9 @@ namespace Fall2025_Project3_krhanson3.Controllers
         {
             if (id == null) return NotFound();
 
-            var actor = await _context.Actors.FirstOrDefaultAsync(a => a.ActorId == id);
+            var actor = await _context.Actors.Include(a => a.MovieActors)
+                    .ThenInclude(ma => ma.Movie).FirstOrDefaultAsync(a => a.ActorId == id);
+
             if (actor == null) return NotFound();
 
             return View(actor);
