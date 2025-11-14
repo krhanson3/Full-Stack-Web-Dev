@@ -1,14 +1,15 @@
-﻿using Fall2025_Project3_krhanson3.Data;
-using Fall2025_Project3_krhanson3.Helpers;
-using Fall2025_Project3_krhanson3.Models;
-using Fall2025_Project3_krhanson3.Models.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Fall2025_Project3_krhanson3.Models;
+using Fall2025_Project3_krhanson3.Data;
+using Fall2025_Project3_krhanson3.Models.ViewModels;
+using Fall2025_Project3_krhanson3.Helpers;
+
 
 
 namespace Fall2025_Project3_krhanson3.Controllers
@@ -16,10 +17,12 @@ namespace Fall2025_Project3_krhanson3.Controllers
     public class MoviesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly OpenAiApi _openAiApi;
 
-        public MoviesController(ApplicationDbContext context)
+        public MoviesController(ApplicationDbContext context, OpenAiApi openAiApi)
         {
             _context = context;
+            _openAiApi = openAiApi;
         }
 
         // GET: Movies
@@ -36,10 +39,33 @@ namespace Fall2025_Project3_krhanson3.Controllers
 
             var movie = await _context.Movies.Include(m => m.MovieActors)
                                              .ThenInclude(ma => ma.Actor)
+                                             .Include(m => m.Reviews)
                                              .FirstOrDefaultAsync(m => m.MovieId == id);
 
             if (movie == null) return NotFound();
 
+            // --- Generate AI reviews ---
+            var (sentimentAvg, reviews) = await _openAiApi.GenerateReviewsforMovie(movie.Title);
+            // --- Save to database --- 
+            // 1. Remove old reviews
+            if (movie.Reviews != null)
+                _context.Reviews.RemoveRange(movie.Reviews);
+            // 2. Add new ones
+            foreach (var r in reviews)
+            {
+                movie.Reviews.Add(new Reviews
+                {
+                    MovieId = movie.MovieId,
+                    User = r.User,
+                    Text = r.Text,
+                    Sentiment = r.Sentiment
+                });
+            }
+            // 3. Save sentiment average
+            movie.SentimentAverage = sentimentAvg;
+            await _context.SaveChangesAsync();
+
+            // --- Build ViewModel ---
             var viewModel = new MovieViewModel
             {
                 MovieId = movie.MovieId,
@@ -54,7 +80,18 @@ namespace Fall2025_Project3_krhanson3.Controllers
                         ActorId = ma.Actor.ActorId,
                         Name = ma.Actor.Name
                     })
-                    .ToList() ?? new List<ActorInfo>()
+                    .ToList() ?? new List<ActorInfo>(),
+
+                SentimentAverage = movie.SentimentAverage,
+
+                Review = movie.Reviews.Select(r => new ReviewsInfo
+                    {
+                        ReviewId = r.ReviewId,
+                        User = r.User,
+                        Text = r.Text,
+                        Sentiment = r.Sentiment
+                    })
+                    .ToList() 
 
             };
 

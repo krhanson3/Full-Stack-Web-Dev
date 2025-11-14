@@ -21,8 +21,7 @@ namespace Fall2025_Project3_krhanson3.Helpers
             _deployment = "gpt-4.1-mini";
         }
 
-        public async Task<(double SentimentAverage, IEnumerable<(string User, string Text, double Sentiment)> Tweets)>
-            GenerateTweetsForActor(string actorName)
+        public async Task<(double SentimentAverage, IEnumerable<(string User, string Text, double Sentiment)> Tweets)> GenerateTweetsForActor(string actorName)
         {
             ChatClient client = new AzureOpenAIClient(_apiEndpoint, _apiCredential).GetChatClient(_deployment);
 
@@ -55,5 +54,41 @@ namespace Fall2025_Project3_krhanson3.Helpers
 
             return (avg, tweetResults);
         }
+
+        public async Task<(double SentimentAverage, IEnumerable<(string User, string Text, double Sentiment)> Tweets)> GenerateReviewsforMovie(string movieName)
+        {
+            ChatClient client = new AzureOpenAIClient(_apiEndpoint, _apiCredential).GetChatClient(_deployment);
+
+            IEnumerable<ChatMessage> messages =
+            [
+                new SystemChatMessage("Respond with JSON array of tweet objects: { username: '', tweet: '' }"),
+                new UserChatMessage($"Generate 3 tweets about the movie {movieName}.")
+            ];
+
+            ClientResult<ChatCompletion> result = await client.CompleteChatAsync(messages);
+
+            string jsonText = result.Value.Content.FirstOrDefault()?.Text ?? "[]";
+            JsonArray jsonArray = JsonNode.Parse(jsonText)!.AsArray();
+
+            var analyzer = new SentimentIntensityAnalyzer();
+            double total = 0;
+
+            var tweetResults = jsonArray.Select(t =>
+            {
+                string user = t!["username"]?.ToString()!;
+                string text = t!["tweet"]?.ToString()!;
+                var score = analyzer.PolarityScores(text).Compound;
+
+                total += score;
+
+                return (user, text, score);
+            }).ToList();
+
+            double avg = total / tweetResults.Count;
+
+            return (avg, tweetResults);
+        }
+
+
     }
 }

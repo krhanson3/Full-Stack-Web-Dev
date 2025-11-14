@@ -76,6 +76,38 @@
                 }
 
                 <hr />
+                <!--Reviews-->
+                <h4 class="mt-4">AI-Generate Reviews</h4>
+                @if (Model.Review != null && Model.Review.Any())
+                {
+                    <div class="mt-3">
+
+                        <p>
+                            <strong>Average Sentiment:</strong>
+                            <span class="badge bg-info text-dark">
+                                @Model.SentimentAverage?.ToString("0.###")
+                            </span>
+                        </p>
+
+                        <ul class="list-group">
+                            @foreach (var review in Model.Review)
+                            {
+                                <li class="list-group-item">
+                                    <strong>@review.User</strong><br />
+                                    @review.Text
+                                    <div class="mt-1">
+                                        <span class="badge bg-secondary">Sentiment: @review.Sentiment.ToString("0.###")</span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">AI reviews not available.</p>
+                }
             </div>
         </div>
     </div>

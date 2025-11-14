@@ -31,5 +31,10 @@ namespace Fall2025_Project3_krhanson3.Models
         public IFormFile? PosterFile { get; set; }
 
         public ICollection<MovieActor>? MovieActors { get; set; }
+
+        //Reviews
+        public ICollection<Reviews> Reviews { get; set; }
+
+        public double SentimentAverage { get; set; }
     }
 }
