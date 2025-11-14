@@ -1,12 +1,15 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Fall2025_Project3_krhanson3.Data;
+using Fall2025_Project3_krhanson3.Helpers;
+using Fall2025_Project3_krhanson3.Models;
+using Fall2025_Project3_krhanson3.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Fall2025_Project3_krhanson3.Data;
-using Fall2025_Project3_krhanson3.Models;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace Fall2025_Project3_krhanson3.Controllers
 {
@@ -31,10 +34,31 @@ namespace Fall2025_Project3_krhanson3.Controllers
         {
             if (id == null) return NotFound();
 
-            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            var movie = await _context.Movies.Include(m => m.MovieActors)
+                                             .ThenInclude(ma => ma.Actor)
+                                             .FirstOrDefaultAsync(m => m.MovieId == id);
+
             if (movie == null) return NotFound();
 
-            return View(movie);
+            var viewModel = new MovieViewModel
+            {
+                MovieId = movie.MovieId,
+                Title = movie.Title,
+                Genre = movie.Genre,
+                ReleaseYear = movie.ReleaseYear,
+                IMDBUrl = movie.IMDBUrl,
+                Poster = movie.Poster,
+                Actors = movie.MovieActors?
+                    .Select(ma => new ActorInfo
+                    {
+                        ActorId = ma.Actor.ActorId,
+                        Name = ma.Actor.Name
+                    })
+                    .ToList() ?? new List<ActorInfo>()
+
+            };
+
+            return View(viewModel);
         }
 
         // GET: Movies/Create
@@ -55,6 +79,12 @@ namespace Fall2025_Project3_krhanson3.Controllers
                     using var ms = new MemoryStream();
                     await PosterFile.CopyToAsync(ms);
                     movie.Poster = ms.ToArray();
+                    movie.PosterSRI = SRIHelper.ComputeSRI(movie.Poster);
+                }
+
+                if (!string.IsNullOrEmpty(movie.IMDBUrl))
+                {
+                    movie.IMDBUrlSRI = await SRIHelper.ComputeSRIFromUrlAsync(movie.IMDBUrl);
                 }
 
                 _context.Add(movie);

@@ -33,6 +33,10 @@
                     {
                         <a href="@item.IMDBUrl" target="_blank">IMDB</a>
                     }
+                    else
+                    {
+                        <span class="badge bg-secondary">N/A</span>
+                    }
                 </td>
                 <td>
                     @if (item.Photo != null && item.Photo.Length > 0)

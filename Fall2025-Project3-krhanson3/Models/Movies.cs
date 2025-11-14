@@ -19,11 +19,17 @@ namespace Fall2025_Project3_krhanson3.Models
         [Url]
         public string? IMDBUrl { get; set; }
 
+        public string? IMDBUrlSRI { get; set; }
+
         // Stored in DB
         public byte[]? Poster { get; set; }
+
+        public string? PosterSRI { get; set; }
 
         // Used only for uploads
         [NotMapped]
         public IFormFile? PosterFile { get; set; }
+
+        public ICollection<MovieActor>? MovieActors { get; set; }
     }
 }

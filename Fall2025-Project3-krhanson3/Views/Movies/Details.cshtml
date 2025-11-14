@@ -1,69 +1,92 @@
-﻿@model Fall2025_Project3_krhanson3.Models.Movies
+﻿@model Fall2025_Project3_krhanson3.Models.ViewModels.MovieViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Movie Details";
 }
 
-<h1>Details</h1>
+<div class="container mt-4">
 
-<div>
-    <h4>Movie</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    <!-- Movie Card -->
+    <div class="card shadow-lg p-4">
+        <div class="row">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
+            <!-- Poster Column -->
+            <div class="col-md-4 text-center mt-4">
+                @if (Model.Poster != null && Model.Poster.Length > 0)
+                {
+                    var imageBase64 = Convert.ToBase64String(Model.Poster);
+                    var imageSrc = $"data:image/png;base64,{imageBase64}";
+                    <img src="@imageSrc" class="rounded img-fluid mb-3"
+                         style="max-width: 250px; height: 350px; object-fit: cover;" />
+                }
+                else
+                {
+                    <div class="bg-secondary text-white d-flex align-items-center justify-content-center"
+                         style="width: 250px; height: 350px; border-radius: 10px;">
+                        No Poster
+                    </div>
+                }
+            </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseYear)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ReleaseYear)
-        </dd>
+            <!-- Movie Details Column -->
+            <div class="col-md-8">
+                <h2 class="fw-bold">@Model.Title</h2>
+                <hr />
 
-        <dt class="col-sm-2">
-            IMDB
-        </dt>
-        <dd class="col-sm-10">
-            @if (!string.IsNullOrEmpty(Model.IMDBUrl))
-            {
-                <a href="@Model.IMDBUrl" target="_blank" class="link-primary">View on IMDB</a>
-            }
-            else
-            {
-                <span class="text-muted">Not available</span>
-            }
-        </dd>
+                <p><strong>Genre:</strong> @Model.Genre</p>
+                <p><strong>Release Year:</strong> @Model.ReleaseYear</p>
 
-        <dt class="col-sm-2">
-            Poster
-        </dt>
-        <dd class="col-sm-10">
-            @if (Model.Poster != null && Model.Poster.Length > 0)
-            {
-                var imageBase64 = Convert.ToBase64String(Model.Poster);
-                var imageSrc = $"data:image/png;base64,{imageBase64}";
-                <img src="@imageSrc" alt="Movie Poster" class="img-thumbnail mt-2" style="width:150px; height:200px; object-fit:cover;" />
-            }
-            else
-            {
-                <span class="badge bg-secondary">No poster available</span>
-            }
-        </dd>
-    </dl>
-</div>
+                <p>
+                    <strong>IMDB:</strong>
+                    @if (!string.IsNullOrEmpty(Model.IMDBUrl))
+                    {
+                        <a href="@Model.IMDBUrl" target="_blank" class="btn btn-outline-primary btn-sm ms-2">
+                            View on IMDB
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted ms-2">Not available</span>
+                    }
+                </p>
 
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-outline-primary">Edit</a>
-    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Back to List</a>
+                <hr />
+
+                <!-- Actors Section -->
+                <h4 class="mt-4">Actors</h4>
+                @if (Model.Actors != null && Model.Actors.Any())
+                {
+                    <ul class="list-group mt-2">
+                        @foreach (var actor in Model.Actors)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a asp-controller="Actors"
+                                   asp-action="Details"
+                                   asp-route-id="@actor.ActorId"
+                                   class="text-decoration-none">
+                                    @actor.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No actors listed for this movie.</p>
+                }
+
+                <hr />
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-primary">
+            Edit Movie
+        </a>
+        <a asp-action="Index" class="btn btn-secondary ms-2">
+            Back to List
+        </a>
+    </div>
 </div>

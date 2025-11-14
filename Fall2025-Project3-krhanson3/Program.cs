@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Http.Features;
 
 
-
 internal class Program
 {
     private static void Main(string[] args)
@@ -27,6 +26,8 @@ internal class Program
         {
             options.MultipartBodyLengthLimit = 104857600; // 100 MB
         });
+
+        builder.Services.AddScoped<Fall2025_Project3_krhanson3.Helpers.OpenAiApi>();
 
 
 
@@ -61,4 +62,8 @@ internal class Program
 
         app.Run();
     }
+
+    
+
+
 }

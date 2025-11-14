@@ -19,11 +19,22 @@ namespace Fall2025_Project3_krhanson3.Models
         [Url]
         public string? IMDBUrl { get; set; }
 
+        public string? IMDBUrlSRI { get; set; }
+
         // Stored in DB
         public byte[]? Photo { get; set; }
+
+        public string? PhotoSRI { get; set; }
 
         // Used only for uploads
         [NotMapped]
         public IFormFile? PhotoFile { get; set; }
+
+        public ICollection<MovieActor>? MovieActors { get; set; }
+
+        public ICollection<Tweets> Tweets { get; set; }
+
+        public double SentimentAverage { get; set; }
+
     }
 }

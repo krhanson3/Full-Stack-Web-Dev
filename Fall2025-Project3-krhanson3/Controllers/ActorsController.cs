@@ -4,18 +4,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Fall2025_Project3_krhanson3.Data;
 using Fall2025_Project3_krhanson3.Models;
+using Fall2025_Project3_krhanson3.Data;
+using Fall2025_Project3_krhanson3.Models.ViewModels;
+using Fall2025_Project3_krhanson3.Helpers;
+
+
 
 namespace Fall2025_Project3_krhanson3.Controllers
 {
     public class ActorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly OpenAiApi _openAiApi;
 
-        public ActorsController(ApplicationDbContext context)
+        public ActorsController(ApplicationDbContext context, OpenAiApi openAiApi)
         {
             _context = context;
+            _openAiApi = openAiApi;
         }
 
         // GET: Actors
@@ -30,11 +36,69 @@ namespace Fall2025_Project3_krhanson3.Controllers
         {
             if (id == null) return NotFound();
 
-            var actor = await _context.Actors.FirstOrDefaultAsync(a => a.ActorId == id);
+            var actor = await _context.Actors
+                        .Include(a => a.MovieActors)
+                            .ThenInclude(ma => ma.Movie)
+                        .Include(a => a.Tweets)  
+                        .FirstOrDefaultAsync(a => a.ActorId == id);
+
             if (actor == null) return NotFound();
 
-            return View(actor);
+            // --- Generate AI tweets ---
+            var (sentimentAvg, tweets) = await _openAiApi.GenerateTweetsForActor(actor.Name);
+
+            // --- Save to database ---
+            // 1. Remove old tweets
+            if (actor.Tweets != null)
+                _context.Tweets.RemoveRange(actor.Tweets);
+
+            // 2. Add new ones
+            foreach (var t in tweets)
+            {
+                actor.Tweets.Add(new Tweets
+                {
+                    ActorId = actor.ActorId,
+                    User = t.User,
+                    Text = t.Text,
+                    Sentiment = t.Sentiment
+                });
+            }
+
+            // 3. Save sentiment average
+            actor.SentimentAverage = sentimentAvg;
+
+            await _context.SaveChangesAsync();
+
+            // --- Build ViewModel ---
+            var viewModel = new ActorViewModel
+            {
+                ActorId = actor.ActorId,
+                Name = actor.Name,
+                Gender = actor.Gender,
+                Age = actor.Age,
+                IMDBUrl = actor.IMDBUrl,
+                Photo = actor.Photo,
+
+                Movies = actor.MovieActors?.Select(ma => new MovieInfo
+                {
+                    MovieId = ma.Movie.MovieId,
+                    Title = ma.Movie.Title
+                }).ToList() ?? new List<MovieInfo>(),
+
+                SentimentAverage = actor.SentimentAverage,
+
+                Tweets = actor.Tweets.Select(t => new TweetsInfo
+                {
+                    Id = t.TweetId,
+                    User = t.User,
+                    Text = t.Text,
+                    Sentiment = t.Sentiment
+                }).ToList()
+            };
+
+            return View(viewModel);
         }
+
 
         // GET: Actors/Create
         public IActionResult Create()
@@ -54,6 +118,12 @@ namespace Fall2025_Project3_krhanson3.Controllers
                     using var ms = new MemoryStream();
                     await PhotoFile.CopyToAsync(ms);
                     actor.Photo = ms.ToArray();
+                    actor.PhotoSRI = SRIHelper.ComputeSRI(actor.Photo);
+                }
+
+                if (!string.IsNullOrEmpty(actor.IMDBUrl))
+                {
+                    actor.IMDBUrlSRI = await SRIHelper.ComputeSRIFromUrlAsync(actor.IMDBUrl);
                 }
 
                 _context.Add(actor);
