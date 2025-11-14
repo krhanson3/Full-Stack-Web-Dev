@@ -1,4 +1,4 @@
-﻿@model Fall2025_Project3_krhanson3.Models.Movies
+﻿@model Fall2025_Project3_krhanson3.Models.ViewModels.MovieViewModel
 
 @{
     ViewData["Title"] = "Movie Details";
@@ -54,18 +54,17 @@
 
                 <!-- Actors Section -->
                 <h4 class="mt-4">Actors</h4>
-
-                @if (Model.MovieActors != null && Model.MovieActors.Any())
+                @if (Model.Actors != null && Model.Actors.Any())
                 {
                     <ul class="list-group mt-2">
-                        @foreach (var ma in Model.MovieActors)
+                        @foreach (var actor in Model.Actors)
                         {
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <a asp-controller="Actors"
                                    asp-action="Details"
-                                   asp-route-id="@ma.Actor.ActorId"
+                                   asp-route-id="@actor.ActorId"
                                    class="text-decoration-none">
-                                    @ma.Actor.Name
+                                    @actor.Name
                                 </a>
                             </li>
                         }
@@ -75,6 +74,8 @@
                 {
                     <p class="text-muted">No actors listed for this movie.</p>
                 }
+
+                <hr />
             </div>
         </div>
     </div>

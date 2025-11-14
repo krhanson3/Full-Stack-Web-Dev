@@ -13,5 +13,6 @@ namespace Fall2025_Project3_krhanson3.Data
         public DbSet<Fall2025_Project3_krhanson3.Models.Actors> Actors { get; set; } = default!;
         public DbSet<Fall2025_Project3_krhanson3.Models.Movies> Movies { get; set; } = default!;
         public DbSet<Fall2025_Project3_krhanson3.Models.MovieActor> MovieActor { get; set; } = default!;
+        public DbSet<Fall2025_Project3_krhanson3.Models.Tweets> Tweets { get; set; } = default!;
     }
 }

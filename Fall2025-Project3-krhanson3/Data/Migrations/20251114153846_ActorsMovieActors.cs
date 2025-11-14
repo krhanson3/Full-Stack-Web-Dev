@@ -10,19 +10,13 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Photo",
-                table: "Movies",
-                newName: "Poster");
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Poster",
-                table: "Movies",
-                newName: "Photo");
+
         }
     }
 }

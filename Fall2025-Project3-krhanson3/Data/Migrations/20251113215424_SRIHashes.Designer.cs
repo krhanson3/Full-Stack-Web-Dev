@@ -4,6 +4,7 @@ using Fall2025_Project3_krhanson3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fall2025_Project3_krhanson3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251113215424_SRIHashes")]
+    partial class SRIHashes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,9 +54,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
 
                     b.Property<string>("PhotoSRI")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("SentimentAverage")
-                        .HasColumnType("float");
 
                     b.HasKey("ActorId");
 
@@ -116,35 +116,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                     b.HasKey("MovieId");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Tweets", b =>
-                {
-                    b.Property<int>("TweetId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TweetId"));
-
-                    b.Property<int>("ActorId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Sentiment")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TweetId");
-
-                    b.HasIndex("ActorId");
-
-                    b.ToTable("Tweets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -368,17 +339,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Tweets", b =>
-                {
-                    b.HasOne("Fall2025_Project3_krhanson3.Models.Actors", "Actor")
-                        .WithMany("Tweets")
-                        .HasForeignKey("ActorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Actor");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -433,8 +393,6 @@ namespace Fall2025_Project3_krhanson3.Data.Migrations
             modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Actors", b =>
                 {
                     b.Navigation("MovieActors");
-
-                    b.Navigation("Tweets");
                 });
 
             modelBuilder.Entity("Fall2025_Project3_krhanson3.Models.Movies", b =>
