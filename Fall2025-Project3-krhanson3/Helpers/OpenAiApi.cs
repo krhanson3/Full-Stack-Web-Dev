@@ -18,7 +18,7 @@ namespace Fall2025_Project3_krhanson3.Helpers
         {
             _apiEndpoint = new(configuration["AzureOpenAI:Endpoint"]);
             _apiCredential = new(configuration["AzureOpenAI:ApiKey"]);
-            _deployment = "gpt-4.1-mini";
+            _deployment = "gpt-4.1-nano";
         }
 
         public async Task<(double SentimentAverage, IEnumerable<(string User, string Text, double Sentiment)> Tweets)> GenerateTweetsForActor(string actorName)
