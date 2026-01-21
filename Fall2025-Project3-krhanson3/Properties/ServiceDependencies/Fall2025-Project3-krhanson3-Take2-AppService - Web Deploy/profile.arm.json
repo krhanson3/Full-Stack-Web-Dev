@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "Fall2025-Project3-krhanson3-AppService",
+      "defaultValue": "Fall2025-Project3-krhanson3-Take2-AppService",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
